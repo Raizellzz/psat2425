@@ -1,16 +1,15 @@
-# PSAT2425 - Aplikasi Manajemen Data Siswa
+````markdown
+# 📚 Aplikasi Manajemen Data Siswa
 
-Aplikasi web sederhana berbasis PHP & MySQL untuk mengelola data siswa. Dapat dijalankan di AWS menggunakan EC2 dan RDS.
+Aplikasi berbasis web sederhana untuk manajemen data siswa menggunakan PHP dan MySQL.
 
----
+## ✨ Fitur
 
-## 📦 Fitur
-
-- Login Admin
-- Dashboard siswa
-- Tambah/Edit/Hapus data siswa
-- Upload file
-- Logout
+- Login Admin  
+- Dashboard siswa  
+- Tambah/Edit/Hapus data siswa  
+- Upload file  
+- Logout  
 
 ---
 
@@ -18,31 +17,35 @@ Aplikasi web sederhana berbasis PHP & MySQL untuk mengelola data siswa. Dapat di
 
 ### 1. Siapkan Server EC2
 
-- Buat instance EC2 dengan OS Linux (contoh: Ubuntu atau Amazon Linux 2)
+- Buat instance EC2 dengan OS Linux (contoh: Ubuntu atau Amazon Linux 2)  
 - Pastikan Security Group mengizinkan akses:
-  - HTTP (port 80)
+  - HTTP (port 80)  
   - SSH (port 22)
+
+---
 
 ### 2. Siapkan Database RDS MySQL
 
-- Buat database RDS MySQL di AWS
+- Buat database RDS MySQL di AWS  
 - Simpan informasi berikut:
-  - **Endpoint**
-  - **Nama database**
-  - **Username**
-  - **Password**
+  - ✅ Endpoint  
+  - ✅ Nama database  
+  - ✅ Username  
+  - ✅ Password  
+
+---
 
 ### 3. Konfigurasi EC2 (Contoh: Ubuntu)
 
 Saat membuat instance EC2, pilih pengaturan berikut:
 
-- **Name** = (nama instance)
-- **Application and OS Images** = Ubuntu
-- **Instance type** = t2.micro atau t2.nano
-- **Key pair** = `vockey`
+- **Name** = (nama instance)  
+- **Application and OS Images** = Ubuntu  
+- **Instance type** = t2.micro atau t2.nano  
+- **Key pair** = `vockey`  
 - **Security groups** = Izinkan akses ke SSH, HTTP, HTTPS dari `0.0.0.0/0`
 
-#### Isi *User data* dengan script berikut:
+#### Isi **User data** dengan script berikut:
 
 ```bash
 #!/bin/bash
@@ -55,35 +58,51 @@ echo DB_USER=(username) > /var/www/html/.env
 echo DB_PASS=(password) >> /var/www/html/.env
 echo DB_NAME=(database) >> /var/www/html/.env
 echo DB_HOST=(endpoint rds) >> /var/www/html/.env
-```
+````
 
-Ganti (username), (password), (database), dan (endpoint rds) dengan informasi RDS Anda.
+❗️**Ganti** `(username)`, `(password)`, `(database)`, dan `(endpoint rds)` dengan informasi RDS Anda.
+
+---
 
 ### 4. Konfigurasi Database RDS
-Template = Free Tier
 
-Engine = MySQL
+* Template = Free Tier
+* Engine = MySQL
+* Availability = Single-AZ
+* DB cluster identifier = (nama database)
+* Master username = (username)
+* Master password = (password)
+* Public access = **No**
+* Security Group = Izinkan inbound MySQL (port 3306) dari `0.0.0.0/0`
 
-Availability = Single-AZ
+---
 
-DB cluster identifier = (nama database)
+### 🌐 Akses Aplikasi
 
-Master username = (username)
-
-Master password = (password)
-
-Public access = No
-
-Security Group = Izinkan inbound MySQL (port 3306) dari 0.0.0.0/0
-
-🌐 Akses Aplikasi
 Buka browser dan akses:
 
-cpp
-Salin
-Edit
+```
 http://<public-ip-ec2>/
-🔐 Login Admin
-Username: admin
+```
 
-Password: 123
+🔐 **Login Admin:**
+
+* **Username**: `admin`
+* **Password**: `123`
+
+---
+
+## 📁 Struktur Direktori Aplikasi
+
+```
+├── dashboard.php
+├── db.php
+├── delete.php
+├── edit.php
+├── index.php
+├── input.php
+├── logout.php
+├── menu.php
+├── style.css
+└── uploads/
+```
