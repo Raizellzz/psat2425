@@ -1,49 +1,57 @@
-# Penilaian Sumatif Akhir Tahun
-## Mapil DevOps XI TJKT 1 - Penilaian Praktek
-### SMKN 1 Banyumas - TA. 2024 2025
+# PSAT2425 - Aplikasi Manajemen Data Siswa
 
+Aplikasi web sederhana berbasis PHP & MySQL untuk mengelola data siswa. Dapat dijalankan di AWS menggunakan EC2 dan RDS.
 
-#
-# Cara mendeploy Aplikasi
+---
 
-## 1. Buat File .env
+## 📦 Fitur
 
-File .env adalah file environment sistem mirip seperti file konfig.php
-#
-isi file .env sebagai berikut
+- Login Admin
+- Dashboard siswa
+- Tambah/Edit/Hapus data siswa
+- Upload file
+- Logout
 
-```.env
-DB_USER=....  (isi dengan user RDS)
-DB_PASS=....  (isi dengan password RDS)
-DB_NAME=....  (isi dengan nama database yang akan dibuat di RDS)
-DB_HOST=....  (isi dengan Endpoint RDS)
-```
+---
 
-contoh:
+## 🚀 Cara Menjalankan di AWS
 
-```.env
-DB_USER=admin
-DB_PASS=P4ssw0rd123
-DB_NAME=psat2425
-DB_HOST=rdsku.czt6n8ylfvyb.us-east-1.rds.amazonaws.com
-```
+### 1. Siapkan Server EC2
 
-## 2. Jalankan 
-Jalankan dengan username dan password default berikut ini
-#
-### username = admin
-### password = 123
-#
+- Buat instance EC2 dengan OS Linux (contoh: Ubuntu atau Amazon Linux 2)
+- Pastikan Security Group mengizinkan akses:
+  - HTTP (port 80)
+  - SSH (port 22)
 
-Kemudian inputkanlah data sesuai dengan datamu
+### 2. Siapkan Database RDS MySQL
 
+- Buat database RDS MySQL di AWS
+- Simpan informasi berikut:
+  - **Endpoint**
+  - **Nama database**
+  - **Username**
+  - **Password**
 
-#
-# Pengumpulan Hasil
-Catat Link repositry anda
+### 3. Konfigurasi EC2 (Contoh: Ubuntu)
 
-Screenshoot halaman Data Siswa (dashboard.php) yang sudah ada namamu
+Saat membuat instance EC2, pilih pengaturan berikut:
 
-Kumpulkan ke Form yang ada di dalam GC 
+- **Name** = (nama instance)
+- **Application and OS Images** = Ubuntu
+- **Instance type** = t2.micro atau t2.nano
+- **Key pair** = `vockey`
+- **Security groups** = Izinkan akses ke SSH, HTTP, HTTPS dari `0.0.0.0/0`
 
-#
+#### Isi *User data* dengan script berikut:
+
+```bash
+#!/bin/bash
+sudo apt update -y
+sudo apt install -y apache2 php php-mysql libapache2-mod-php mysql-client
+sudo rm -rf /var/www/html/{*,.*}
+sudo git clone https://github.com/Shirou25/psat2425.git /var/www/html
+sudo chmod -R 777 /var/www/html
+echo DB_USER=(username) > /var/www/html/.env
+echo DB_PASS=(password) >> /var/www/html/.env
+echo DB_NAME=(database) >> /var/www/html/.env
+echo DB_HOST=(endpoint rds) >> /var/www/html/.env
