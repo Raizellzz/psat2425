@@ -55,3 +55,34 @@ echo DB_USER=(username) > /var/www/html/.env
 echo DB_PASS=(password) >> /var/www/html/.env
 echo DB_NAME=(database) >> /var/www/html/.env
 echo DB_HOST=(endpoint rds) >> /var/www/html/.env
+
+Ganti (username), (password), (database), dan (endpoint rds) dengan informasi RDS Anda.
+
+4. Konfigurasi Database RDS
+Template = Free Tier
+
+Engine = MySQL
+
+Availability = Single-AZ
+
+DB cluster identifier = (nama database)
+
+Master username = (username)
+
+Master password = (password)
+
+Public access = No
+
+Security Group = Izinkan inbound MySQL (port 3306) dari 0.0.0.0/0
+
+🌐 Akses Aplikasi
+Buka browser dan akses:
+
+cpp
+Salin
+Edit
+http://<public-ip-ec2>/
+🔐 Login Admin
+Username: admin
+
+Password: 123
