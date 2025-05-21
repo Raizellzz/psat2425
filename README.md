@@ -1,4 +1,3 @@
-````markdown
 # 📚 Aplikasi Manajemen Data Siswa
 
 Aplikasi berbasis web sederhana untuk manajemen data siswa menggunakan PHP dan MySQL.
