@@ -55,10 +55,11 @@ echo DB_USER=(username) > /var/www/html/.env
 echo DB_PASS=(password) >> /var/www/html/.env
 echo DB_NAME=(database) >> /var/www/html/.env
 echo DB_HOST=(endpoint rds) >> /var/www/html/.env
+```
 
-### Ganti (username), (password), (database), dan (endpoint rds) dengan informasi RDS Anda.
+Ganti (username), (password), (database), dan (endpoint rds) dengan informasi RDS Anda.
 
-4. Konfigurasi Database RDS
+### 4. Konfigurasi Database RDS
 Template = Free Tier
 
 Engine = MySQL
