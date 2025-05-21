@@ -25,7 +25,16 @@ Aplikasi berbasis web sederhana untuk manajemen data siswa menggunakan PHP dan M
 
 ### 2. Siapkan Database RDS MySQL
 
-- Buat database RDS MySQL di AWS  
+- Buat database RDS MySQL di AWS
+  * Template = Free Tier
+  * Engine = MySQL
+  * Availability = Single-AZ
+  * DB cluster identifier = (nama database)
+  * Master username = (username)
+  * Master password = (password)
+  * Public access = **No**
+  * Security Group = Izinkan inbound MySQL (port 3306) dari `0.0.0.0/0`
+    Kemudian tunggu sampai endpoint muncul
 - Simpan informasi berikut:
   - ✅ Endpoint  
   - ✅ Nama database  
@@ -60,19 +69,6 @@ echo DB_HOST=(endpoint rds) >> /var/www/html/.env
 ````
 
 ❗️**Ganti** `(username)`, `(password)`, `(database)`, dan `(endpoint rds)` dengan informasi RDS Anda.
-
----
-
-### 4. Konfigurasi Database RDS
-
-* Template = Free Tier
-* Engine = MySQL
-* Availability = Single-AZ
-* DB cluster identifier = (nama database)
-* Master username = (username)
-* Master password = (password)
-* Public access = **No**
-* Security Group = Izinkan inbound MySQL (port 3306) dari `0.0.0.0/0`
 
 ---
 
