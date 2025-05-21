@@ -86,18 +86,3 @@ http://<public-ip-ec2>/
 * **Password**: `123`
 
 ---
-
-## 📁 Struktur Direktori Aplikasi
-
-```
-├── dashboard.php
-├── db.php
-├── delete.php
-├── edit.php
-├── index.php
-├── input.php
-├── logout.php
-├── menu.php
-├── style.css
-└── uploads/
-```
