@@ -60,7 +60,7 @@ Saat membuat instance EC2, pilih pengaturan berikut:
 sudo apt update -y
 sudo apt install -y apache2 php php-mysql libapache2-mod-php mysql-client
 sudo rm -rf /var/www/html/{*,.*}
-sudo git clone https://github.com/Shirou25/psat2425.git /var/www/html
+sudo git clone https://github.com/Raizellzz/psat2425.git /var/www/html
 sudo chmod -R 777 /var/www/html
 echo DB_USER=(username) > /var/www/html/.env
 echo DB_PASS=(password) >> /var/www/html/.env
